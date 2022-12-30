@@ -1,21 +1,79 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { memo } from 'react'
+import { monkeyHappyness } from './data'
 
-const f1 = 'fmacaconoiphone.jpg'
-const f2 = 'fsorrindodelado.jpg'
-const n1 = 'nmacacosentado.jpg'
-const n2 = 'nmacacodeblusa.jpg'
-const t1 = 'tmacacodemamadeiraMUITOFOFO.jpg'
-const t2 = 'tmacacodormindo.jpg'
+const imgClass = 'rounded-t-2xl h-[300px]'
 
-const MonkeyImage = ({ pct }: { pct: number }) => {
+const Monkeyimg = ({ pct }: { pct: number }) => {
   return (
-    <Image
-      src="/static/macacos/tmacacodemamadeiraMUITOFOFO.jpg"
-      alt="MACACO"
-      fill
-    />
+    <>
+      {monkeyHappyness(pct) === 't1' && (
+        <Image
+          loading="eager"
+          priority
+          fill
+          src="/static/macacos/tmacacodemamadeiraMUITOFOFO.jpg"
+          alt="MACACO"
+          className={imgClass}
+        />
+      )}
+
+      {monkeyHappyness(pct) === 't2' && (
+        <Image
+          loading="eager"
+          priority
+          fill
+          src="/static/macacos/tmacacodormindo.jpg"
+          alt="MACACO"
+          className={imgClass}
+        />
+      )}
+
+      {monkeyHappyness(pct) === 'n1' && (
+        <Image
+          loading="eager"
+          priority
+          fill
+          src="/static/macacos/nmacacosentado.jpg"
+          alt="MACACO"
+          className={imgClass}
+        />
+      )}
+
+      {monkeyHappyness(pct) === 'n2' && (
+        <Image
+          loading="eager"
+          priority
+          fill
+          src="/static/macacos/nmacacodeblusa.jpg"
+          alt="MACACO"
+          className={imgClass}
+        />
+      )}
+
+      {monkeyHappyness(pct) === 'f1' && (
+        <Image
+          loading="eager"
+          priority
+          fill
+          src="/static/macacos/fmacaconoiphone.jpg"
+          alt="MACACO"
+          className={imgClass}
+        />
+      )}
+
+      {monkeyHappyness(pct) === 'f2' && (
+        <Image
+          loading="eager"
+          priority
+          fill
+          src="/static/macacos/fsorrindodelado.jpg"
+          alt="MACACO"
+          className={imgClass}
+        />
+      )}
+    </>
   )
 }
 
-export default MonkeyImage
+export default memo(Monkeyimg)
